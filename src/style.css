@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
 
-:root {
+.theme-1 {
   --bg-1: hsl(222, 26%, 31%);
   --bg-2: hsl(223, 31%, 20%);
   --bg-3: hsl(224, 36%, 15%);
   --bg-4: hsl(225, 21%, 49%);
-  --bg-4-dark: hsl(225, 21%, 49%);
+  --bg-4-dark: hsl(224, 28%, 35%);
   --bg-5: hsl(6, 63%, 50%);
   --bg-5-dark: hsl(6, 70%, 34%);
   --bg-6: hsl(30, 25%, 89%);
@@ -16,7 +16,45 @@
   --fg-4: hsl(0, 0%, 100%);
   --fg-5: hsl(0, 0%, 100%);
   --fg-6: hsl(221, 14%, 31%);
+}
 
+.theme-2 {
+  --bg-1: hsl(0, 0%, 90%);
+  --bg-2: hsl(0, 5%, 81%);
+  --bg-3: hsl(0, 0%, 93%);
+  --bg-4: hsl(185, 42%, 37%);
+  --bg-4-dark: hsl(185, 58%, 25%);
+  --bg-5: hsl(25, 98%, 40%);
+  --bg-5-dark: hsl(25, 99%, 27%);
+  --bg-6: hsl(45, 7%, 89%);
+  --bg-6-dark: hsl(35, 11%, 61%);
+  --fg-1: hsl(221, 14%, 31%);
+  --fg-2: hsl(221, 14%, 31%);
+  --fg-3: hsl(221, 14%, 31%);
+  --fg-4: hsl(0, 0%, 100%);
+  --fg-5: hsl(0, 0%, 100%);
+  --fg-6: hsl(221, 14%, 31%);
+}
+
+.theme-3 {
+  --bg-1: hsl(268, 75%, 9%);
+  --bg-2: hsl(268, 71%, 12%);
+  --bg-3: hsl(268, 71%, 12%);
+  --bg-4: hsl(281, 89%, 26%);
+  --bg-4-dark: hsl(285, 91%, 52%);
+  --bg-5: hsl(176, 100%, 44%);
+  --bg-5-dark: hsl(177, 92%, 70%);
+  --bg-6: hsl(268, 47%, 21%);
+  --bg-6-dark: hsl(290, 70%, 36%);
+  --fg-1: hsl(52, 100%, 62%);
+  --fg-2: hsl(52, 100%, 62%);
+  --fg-3: hsl(52, 100%, 62%);
+  --fg-4: hsl(0, 0%, 100%);
+  --fg-5: hsl(198, 20%, 13%);
+  --fg-6: hsl(52, 100%, 62%);
+}
+
+:root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -38,13 +76,4 @@ a {
 
 button {
   cursor: pointer;
-}
-
-#app {
-  background-color: var(--bg-1);
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

@@ -15,19 +15,19 @@ function operation(event: Event) {
   val.value = "";
 }
 function calc() {
-  if(first) {
+  if (first) {
     let ans = val.value;
-    if(op == "+") ans = `${Number(first) + Number(val.value)}`;
-    if(op == "-") ans = `${Number(first) - Number(val.value)}`;
-    if(op == "x") ans = `${Number(first) * Number(val.value)}`;
-    if(op == "/") ans = `${Number(first) / Number(val.value)}`;
+    if (op == "+") ans = `${Number(first) + Number(val.value)}`;
+    if (op == "-") ans = `${Number(first) - Number(val.value)}`;
+    if (op == "x") ans = `${Number(first) * Number(val.value)}`;
+    if (op == "/") ans = `${Number(first) / Number(val.value)}`;
     val.value = ans;
     first = val.value;
   }
   op = "";
 }
 function del() {
-  if(val) val.value = val.value.slice(0, -1);
+  if (val) val.value = val.value.slice(0, -1);
 }
 function reset() {
   val.value = "";
@@ -36,53 +36,64 @@ function reset() {
 </script>
 
 <template>
-  <div class="calculator">
-    <div class="title">
-      <span>calc</span>
-      <div class="theme-picker">
-        <span>theme</span>
-        <div class="toggle-btn">
-          <div class="toggle-btn-ball"></div>
+  <div class="app theme-1">
+    <div class="calculator">
+      <div class="title">
+        <span>calc</span>
+        <div class="theme-picker">
+          <span>theme</span>
+          <div class="toggle-btn">
+            <div class="toggle-btn-ball"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="display">
-      {{ val || 0 }}
-    </div>
-    <div class="buttons">
-      <div class="row">
-        <button class="btn math" @click="appendVal">7</button>
-        <button class="btn math" @click="appendVal">8</button>
-        <button class="btn math" @click="appendVal">9</button>
-        <button class="btn option" @click="del">DEL</button>
+      <div class="display">
+        {{ val || 0 }}
       </div>
-      <div class="row">
-        <button class="btn math" @click="appendVal">4</button>
-        <button class="btn math" @click="appendVal">5</button>
-        <button class="btn math" @click="appendVal">6</button>
-        <button class="btn math" @click="operation">+</button>
-      </div>
-      <div class="row">
-        <button class="btn math" @click="appendVal">1</button>
-        <button class="btn math" @click="appendVal">2</button>
-        <button class="btn math" @click="appendVal">3</button>
-        <button class="btn math" @click="operation">-</button>
-      </div>
-      <div class="row">
-        <button class="btn math" @click="appendVal">.</button>
-        <button class="btn math" @click="appendVal">0</button>
-        <button class="btn math" @click="operation">/</button>
-        <button class="btn math" @click="operation">x</button>
-      </div>
-      <div class="row">
-        <button class="btn option" @click="reset">RESET</button>
-        <button class="btn equals" @click="calc">=</button>
+      <div class="buttons">
+        <div class="row">
+          <button class="btn math" @click="appendVal">7</button>
+          <button class="btn math" @click="appendVal">8</button>
+          <button class="btn math" @click="appendVal">9</button>
+          <button class="btn option" @click="del">DEL</button>
+        </div>
+        <div class="row">
+          <button class="btn math" @click="appendVal">4</button>
+          <button class="btn math" @click="appendVal">5</button>
+          <button class="btn math" @click="appendVal">6</button>
+          <button class="btn math" @click="operation">+</button>
+        </div>
+        <div class="row">
+          <button class="btn math" @click="appendVal">1</button>
+          <button class="btn math" @click="appendVal">2</button>
+          <button class="btn math" @click="appendVal">3</button>
+          <button class="btn math" @click="operation">-</button>
+        </div>
+        <div class="row">
+          <button class="btn math" @click="appendVal">.</button>
+          <button class="btn math" @click="appendVal">0</button>
+          <button class="btn math" @click="operation">/</button>
+          <button class="btn math" @click="operation">x</button>
+        </div>
+        <div class="row">
+          <button class="btn option" @click="reset">RESET</button>
+          <button class="btn equals" @click="calc">=</button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.app {
+  background-color: var(--bg-1);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .calculator {
   margin: auto;
   max-width: 300px;
@@ -112,7 +123,7 @@ function reset() {
 }
 
 .toggle-btn-ball {
-  background-color: orange;
+  background-color: var(--bg-5);
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -152,16 +163,19 @@ function reset() {
 
 .option {
   background-color: var(--bg-4);
+  box-shadow: inset 0px -3px 0px 0px var(--bg-4-dark);
   color: var(--fg-4);
 }
 
 .equals {
   background-color: var(--bg-5);
+  box-shadow: inset 0px -3px 0px 0px var(--bg-5-dark);
   color: var(--fg-5);
 }
 
 .math {
   background-color: var(--bg-6);
+  box-shadow: inset 0px -3px 0px 0px var(--bg-6-dark);
   color: var(--fg-6);
 }
 </style>
