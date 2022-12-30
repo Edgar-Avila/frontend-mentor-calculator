@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+let selectedTheme = ref(0);
+let theme = {
+  "theme-1": selectedTheme.value == 0,
+  "theme-2": selectedTheme.value == 1,
+  "theme-3": selectedTheme.value == 2,
+}
 let val = ref("");
 let first = "";
 let op = "";
@@ -33,16 +39,27 @@ function reset() {
   val.value = "";
   first = "";
 }
+function toggle() {
+  selectedTheme.value = ++selectedTheme.value % 3;
+  theme = {
+    "theme-1": selectedTheme.value == 0,
+    "theme-2": selectedTheme.value == 1,
+    "theme-3": selectedTheme.value == 2,
+  }
+}
 </script>
 
 <template>
-  <div class="app theme-1">
+  <div class="app" :class="theme">
     <div class="calculator">
       <div class="title">
         <span>calc</span>
         <div class="theme-picker">
           <span>theme</span>
-          <div class="toggle-btn">
+          <div class="toggle-btn" @click="toggle" :class="{middle: selectedTheme == 1, right: selectedTheme == 2}">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
             <div class="toggle-btn-ball"></div>
           </div>
         </div>
@@ -115,11 +132,32 @@ function reset() {
 }
 
 .toggle-btn {
+  position: relative;
+  display: flex;
   height: 16px;
   width: 45px;
   background-color: var(--bg-2);
   border-radius: 8px;
   padding: 2px;
+  cursor: pointer;
+}
+
+.toggle-btn span {
+  position: absolute;
+  top: -15px;
+}
+
+.toggle-btn span:first-child {
+  left: 0;
+}
+
+.toggle-btn span:nth-child(2) {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toggle-btn span:nth-child(3) {
+  right: 0;
 }
 
 .toggle-btn-ball {
@@ -177,5 +215,13 @@ function reset() {
   background-color: var(--bg-6);
   box-shadow: inset 0px -3px 0px 0px var(--bg-6-dark);
   color: var(--fg-6);
+}
+
+.middle {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
 }
 </style>
