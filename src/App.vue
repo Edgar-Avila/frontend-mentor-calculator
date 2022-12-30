@@ -1,5 +1,38 @@
 <script setup lang="ts">
-const val = 0;
+import { ref } from 'vue';
+let val = ref("");
+let first = "";
+let op = "";
+
+function appendVal(event: Event) {
+  const btn = event.target as HTMLButtonElement;
+  val.value += btn.textContent || "";
+}
+function operation(event: Event) {
+  const btn = event.target as HTMLButtonElement;
+  op = btn.textContent || "";
+  first = val.value || "0";
+  val.value = "";
+}
+function calc() {
+  if(first) {
+    let ans = val.value;
+    if(op == "+") ans = `${Number(first) + Number(val.value)}`;
+    if(op == "-") ans = `${Number(first) - Number(val.value)}`;
+    if(op == "x") ans = `${Number(first) * Number(val.value)}`;
+    if(op == "/") ans = `${Number(first) / Number(val.value)}`;
+    val.value = ans;
+    first = val.value;
+  }
+  op = "";
+}
+function del() {
+  if(val) val.value = val.value.slice(0, -1);
+}
+function reset() {
+  val.value = "";
+  first = "";
+}
 </script>
 
 <template>
@@ -14,36 +47,36 @@ const val = 0;
       </div>
     </div>
     <div class="display">
-      {{ val }}
+      {{ val || 0 }}
     </div>
     <div class="buttons">
       <div class="row">
-        <button class="btn math seven">7</button>
-        <button class="btn math eight">8</button>
-        <button class="btn math nine">9</button>
-        <button class="btn option">DEL</button>
+        <button class="btn math" @click="appendVal">7</button>
+        <button class="btn math" @click="appendVal">8</button>
+        <button class="btn math" @click="appendVal">9</button>
+        <button class="btn option" @click="del">DEL</button>
       </div>
       <div class="row">
-        <button class="btn math four">4</button>
-        <button class="btn math five">5</button>
-        <button class="btn math six">6</button>
-        <button class="btn math plus">+</button>
+        <button class="btn math" @click="appendVal">4</button>
+        <button class="btn math" @click="appendVal">5</button>
+        <button class="btn math" @click="appendVal">6</button>
+        <button class="btn math" @click="operation">+</button>
       </div>
       <div class="row">
-        <button class="btn math one">1</button>
-        <button class="btn math two">2</button>
-        <button class="btn math three">3</button>
-        <button class="btn math minus">-</button>
+        <button class="btn math" @click="appendVal">1</button>
+        <button class="btn math" @click="appendVal">2</button>
+        <button class="btn math" @click="appendVal">3</button>
+        <button class="btn math" @click="operation">-</button>
       </div>
       <div class="row">
-        <button class="btn math point">.</button>
-        <button class="btn math zero">0</button>
-        <button class="btn math divided-by">/</button>
-        <button class="btn math times">x</button>
+        <button class="btn math" @click="appendVal">.</button>
+        <button class="btn math" @click="appendVal">0</button>
+        <button class="btn math" @click="operation">/</button>
+        <button class="btn math" @click="operation">x</button>
       </div>
       <div class="row">
-        <button class="btn option">RESET</button>
-        <button class="btn equals">=</button>
+        <button class="btn option" @click="reset">RESET</button>
+        <button class="btn equals" @click="calc">=</button>
       </div>
     </div>
   </div>
